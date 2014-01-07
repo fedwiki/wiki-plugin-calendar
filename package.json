@@ -35,10 +35,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/paul90/wiki-plugin-calendar.git"
+    "url": "https://github.com/fedwiki/wiki-plugin-calendar.git"
   },
   "bugs": {
-    "url": "https://github.com/paul90/wiki-plugin-calendar/issues"
+    "url": "https://github.com/fedwiki/wiki-plugin-calendar/issues"
   },
   "engines": {
     "node": "0.10"
