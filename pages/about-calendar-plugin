@@ -1,0 +1,752 @@
+{
+  "title": "About Calendar Plugin",
+  "story": [
+    {
+      "type": "paragraph",
+      "id": "103100dfc222a50b",
+      "text": "A calendar item defines a period of time as it might apply to an event or interval in the past or future. A small language makes for concise representation of periods of varying precision. Multiple definitions are allowed and can be expressed relative to each other."
+    },
+    {
+      "type": "paragraph",
+      "id": "420a3fb4abb7673b",
+      "text": "Consider the various dates and date ranges associated with the San Francisco Summer of Love. [http://en.wikipedia.org/wiki/Summer_of_Love wikipedia]"
+    },
+    {
+      "type": "calendar",
+      "id": "1717c285e7c6d29e",
+      "text": "60S Counterculture\n1967 Summer of Love\nJAN 14 Human Be-In\nJUN San Francisco (hit song)\nOCT 6 Death of Hippie (mock funeral)"
+    },
+    {
+      "type": "paragraph",
+      "id": "12e5cee03cede932",
+      "text": "A sequence of related dates need not repeat month or year when they have not changed from line to line."
+    },
+    {
+      "type": "paragraph",
+      "id": "2a22ff127418d31f",
+      "text": "A date might be specified independent of any month or year. In this case, the date that the item is render is taken as the starting date."
+    },
+    {
+      "type": "calendar",
+      "id": "119211e5f3431721",
+      "text": "Today\nAPRIL 1 April Fools Day"
+    },
+    {
+      "type": "paragraph",
+      "id": "1614b7b7525b601e",
+      "text": "Calendar plugins create objects that can be used in other applications. This work-in-progress has had historical timelines in mind."
+    },
+    {
+      "type": "reference",
+      "id": "6bb46f51f1350a9c",
+      "site": "ward.vw.fed.wiki.org",
+      "slug": "dates-for-timelines",
+      "title": "Dates for Timelines",
+      "text": "Marc Weber has suggested how dates should work and I offer my variations."
+    },
+    {
+      "type": "paragraph",
+      "id": "f6dafc22c13ef8ad",
+      "text": "<h3> Schema"
+    },
+    {
+      "type": "paragraph",
+      "id": "3abc5b920cc5b7dc",
+      "text": "A calendar item generates periods which may or may not uniquely specify a date or date interval. A period longer than a day will have a span."
+    },
+    {
+      "type": "code",
+      "id": "6e8e6a953769903d",
+      "text": "period = { day, month, year, span, label }\nday = 1..31\nmonth = 1..12\nyear = integer\nspan = \"DAY|MONTH|YEAR|DECADE\"\nlabel = \"April Fools\""
+    },
+    {
+      "type": "paragraph",
+      "id": "6ab749f3e32fd885",
+      "text": "A period can be evaluated in the context of a specific date. An imprecise date will evaluate to the next period in the context."
+    },
+    {
+      "type": "code",
+      "id": "9c1c67500898e357",
+      "text": "{\"April Fools\": {date: April 1, 2014, span: \"DAY\"}"
+    },
+    {
+      "type": "paragraph",
+      "id": "3618cb35ad758aef",
+      "text": "Date intervals evaluate to the first day of their interval for the purpose of sorting."
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "About Calendar Plugin",
+        "story": [
+
+        ]
+      },
+      "date": 1389586946990
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "103100dfc222a50b"
+      },
+      "id": "103100dfc222a50b",
+      "type": "add",
+      "date": 1389587120502
+    },
+    {
+      "type": "edit",
+      "id": "103100dfc222a50b",
+      "item": {
+        "type": "paragraph",
+        "id": "103100dfc222a50b",
+        "text": "A calendar item defines a period of time as it might apply to an event or interval in the past or future. A small language makes for concise representation of periods of varying precision."
+      },
+      "date": 1389587357982
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "1717c285e7c6d29e"
+      },
+      "id": "1717c285e7c6d29e",
+      "type": "add",
+      "after": "103100dfc222a50b",
+      "date": 1389587623504
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "MARCH 1960"
+      },
+      "date": 1389587644222
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "1967 Summer of Love\nJAN 14 Human Be-In"
+      },
+      "date": 1389587967387
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "1967 Summer of Love\nJAN 14 Human Be-In\nJUN San Francisco (song)"
+      },
+      "date": 1389588095897
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "1967 Summer of Love\nJAN 14 Human Be-In\nJUN San Francisco (song)\nOCT 6 Death of Hippie"
+      },
+      "date": 1389588170827
+    },
+    {
+      "item": {
+        "type": "paragraph",
+        "id": "420a3fb4abb7673b",
+        "text": ""
+      },
+      "id": "420a3fb4abb7673b",
+      "type": "add",
+      "after": "103100dfc222a50b",
+      "date": 1389588206180
+    },
+    {
+      "type": "edit",
+      "id": "420a3fb4abb7673b",
+      "item": {
+        "type": "paragraph",
+        "id": "420a3fb4abb7673b",
+        "text": "Consider the various dates associated with the Summer of Love [http://en.wikipedia.org/wiki/Summer_of_Love wikipedia]"
+      },
+      "date": 1389588245508
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "1967 Summer of Love\nJAN 14 Human Be-In\nJUN San Francisco (hit song)\nOCT 6 Death of Hippie"
+      },
+      "date": 1389588270503
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "1967 Summer of Love\nJAN 14 Human Be-In\nJUN San Francisco (hit song)\nOCT 6 Death of Hippie (mock funeral)"
+      },
+      "date": 1389588281724
+    },
+    {
+      "type": "edit",
+      "id": "420a3fb4abb7673b",
+      "item": {
+        "type": "paragraph",
+        "id": "420a3fb4abb7673b",
+        "text": "Consider the various dates and date ranges associated with the San Francisco Summer of Love [http://en.wikipedia.org/wiki/Summer_of_Love wikipedia]"
+      },
+      "date": 1389588321082
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "60s Counterculture\n1967 Summer of Love\nJAN 14 Human Be-In\nJUN San Francisco (hit song)\nOCT 6 Death of Hippie (mock funeral)"
+      },
+      "date": 1389588487174
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "1960s Counterculture\n1967 Summer of Love\nJAN 14 Human Be-In\nJUN San Francisco (hit song)\nOCT 6 Death of Hippie (mock funeral)"
+      },
+      "date": 1389588498057
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "1967 Summer of Love\nJAN 14 Human Be-In\nJUN San Francisco (hit song)\nOCT 6 Death of Hippie (mock funeral)"
+      },
+      "date": 1389588504436
+    },
+    {
+      "type": "edit",
+      "id": "103100dfc222a50b",
+      "item": {
+        "type": "paragraph",
+        "id": "103100dfc222a50b",
+        "text": "A calendar item defines a period of time as it might apply to an event or interval in the past or future. A small language makes for concise representation of periods of varying precision. Multiple definitions are allowed and can be expressed relative to each other."
+      },
+      "date": 1389588725856
+    },
+    {
+      "type": "edit",
+      "id": "420a3fb4abb7673b",
+      "item": {
+        "type": "paragraph",
+        "id": "420a3fb4abb7673b",
+        "text": "Consider the various dates and date ranges associated with the San Francisco Summer of Love. [http://en.wikipedia.org/wiki/Summer_of_Love wikipedia]"
+      },
+      "date": 1389588745144
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "119211e5f3431721"
+      },
+      "id": "119211e5f3431721",
+      "type": "add",
+      "after": "1717c285e7c6d29e",
+      "date": 1389588889012
+    },
+    {
+      "type": "edit",
+      "id": "119211e5f3431721",
+      "item": {
+        "type": "calendar",
+        "id": "119211e5f3431721",
+        "text": "APRIL 1 April Fools Day"
+      },
+      "date": 1389588893134
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "12e5cee03cede932"
+      },
+      "id": "12e5cee03cede932",
+      "type": "add",
+      "after": "119211e5f3431721",
+      "date": 1389588988617
+    },
+    {
+      "type": "edit",
+      "id": "12e5cee03cede932",
+      "item": {
+        "type": "paragraph",
+        "id": "12e5cee03cede932",
+        "text": "A date might be specified independent of any month or year. In this case, the date that the item is render is taken as the starting date."
+      },
+      "date": 1389589055296
+    },
+    {
+      "type": "move",
+      "order": [
+        "103100dfc222a50b",
+        "420a3fb4abb7673b",
+        "1717c285e7c6d29e",
+        "12e5cee03cede932",
+        "119211e5f3431721"
+      ],
+      "id": "12e5cee03cede932",
+      "date": 1389589059142
+    },
+    {
+      "type": "edit",
+      "id": "119211e5f3431721",
+      "item": {
+        "type": "calendar",
+        "id": "119211e5f3431721",
+        "text": "SATURDAY Next Hack Day\nAPRIL 1 April Fools Day"
+      },
+      "date": 1389589128900
+    },
+    {
+      "type": "edit",
+      "id": "119211e5f3431721",
+      "item": {
+        "type": "calendar",
+        "id": "119211e5f3431721",
+        "text": "SAT Next Hack Day\nAPRIL 1 April Fools Day"
+      },
+      "date": 1389589155092
+    },
+    {
+      "type": "edit",
+      "id": "119211e5f3431721",
+      "item": {
+        "type": "calendar",
+        "id": "119211e5f3431721",
+        "text": "Today\nAPRIL 1 April Fools Day"
+      },
+      "date": 1389589166532
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "1614b7b7525b601e"
+      },
+      "id": "1614b7b7525b601e",
+      "type": "add",
+      "after": "119211e5f3431721",
+      "date": 1389589217493
+    },
+    {
+      "type": "edit",
+      "id": "1614b7b7525b601e",
+      "item": {
+        "type": "paragraph",
+        "id": "1614b7b7525b601e",
+        "text": "Calendar plugins create objects that can be used in other applications. This work-in-progress has had historical timelines in mind."
+      },
+      "date": 1389589430707
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "6bb46f51f1350a9c"
+      },
+      "id": "6bb46f51f1350a9c",
+      "type": "add",
+      "after": "1614b7b7525b601e",
+      "date": 1389589436272
+    },
+    {
+      "type": "edit",
+      "id": "6bb46f51f1350a9c",
+      "item": {
+        "type": "reference",
+        "id": "6bb46f51f1350a9c",
+        "site": "ward.vw.fed.wiki.org",
+        "slug": "dates-for-timelines",
+        "title": "Dates for Timelines",
+        "text": "Marc Weber has suggested how dates should work and I offer my variations."
+      },
+      "date": 1389589442712
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "f6dafc22c13ef8ad"
+      },
+      "id": "f6dafc22c13ef8ad",
+      "type": "add",
+      "after": "6bb46f51f1350a9c",
+      "date": 1389589454850
+    },
+    {
+      "type": "edit",
+      "id": "f6dafc22c13ef8ad",
+      "item": {
+        "type": "paragraph",
+        "id": "f6dafc22c13ef8ad",
+        "text": "<h3> Schema"
+      },
+      "date": 1389589473042
+    },
+    {
+      "item": {
+        "type": "paragraph",
+        "id": "3abc5b920cc5b7dc",
+        "text": ""
+      },
+      "id": "3abc5b920cc5b7dc",
+      "type": "add",
+      "after": "f6dafc22c13ef8ad",
+      "date": 1389589473548
+    },
+    {
+      "type": "edit",
+      "id": "3abc5b920cc5b7dc",
+      "item": {
+        "type": "paragraph",
+        "id": "3abc5b920cc5b7dc",
+        "text": "A calendar item generates periods."
+      },
+      "date": 1389589536272
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "6e8e6a953769903d"
+      },
+      "id": "6e8e6a953769903d",
+      "type": "add",
+      "after": "3abc5b920cc5b7dc",
+      "date": 1389589540019
+    },
+    {
+      "type": "edit",
+      "id": "6e8e6a953769903d",
+      "item": {
+        "type": "code",
+        "id": "6e8e6a953769903d",
+        "text": "period = "
+      },
+      "date": 1389589609253
+    },
+    {
+      "type": "edit",
+      "id": "6e8e6a953769903d",
+      "item": {
+        "type": "code",
+        "id": "6e8e6a953769903d",
+        "text": "period = { day, month, year, span }\nday = 1..31\nmonth = 1..12\nyear = integer\nspan = \"DAY|MONTH|YEAR\""
+      },
+      "date": 1389589962019
+    },
+    {
+      "type": "edit",
+      "id": "3abc5b920cc5b7dc",
+      "item": {
+        "type": "paragraph",
+        "id": "3abc5b920cc5b7dc",
+        "text": "A calendar item generates periods which may or may not uniquely specify a date or date interval. However, all periods have a span."
+      },
+      "date": 1389590049697
+    },
+    {
+      "item": {
+        "type": "paragraph",
+        "id": "6ab749f3e32fd885",
+        "text": ""
+      },
+      "id": "6ab749f3e32fd885",
+      "type": "add",
+      "after": "3abc5b920cc5b7dc",
+      "date": 1389590077796
+    },
+    {
+      "type": "edit",
+      "id": "6ab749f3e32fd885",
+      "item": {
+        "type": "paragraph",
+        "id": "6ab749f3e32fd885",
+        "text": "A period can be "
+      },
+      "date": 1389590092344
+    },
+    {
+      "type": "edit",
+      "id": "6ab749f3e32fd885",
+      "item": {
+        "type": "paragraph",
+        "id": "6ab749f3e32fd885",
+        "text": "A period can be evaluated in the context of a specific date. An imprecise date will evaluate to the next period in the context."
+      },
+      "date": 1389590315565
+    },
+    {
+      "type": "move",
+      "order": [
+        "103100dfc222a50b",
+        "420a3fb4abb7673b",
+        "1717c285e7c6d29e",
+        "12e5cee03cede932",
+        "119211e5f3431721",
+        "1614b7b7525b601e",
+        "6bb46f51f1350a9c",
+        "f6dafc22c13ef8ad",
+        "3abc5b920cc5b7dc",
+        "6e8e6a953769903d",
+        "6ab749f3e32fd885"
+      ],
+      "id": "6ab749f3e32fd885",
+      "date": 1389590319447
+    },
+    {
+      "type": "edit",
+      "id": "6e8e6a953769903d",
+      "item": {
+        "type": "code",
+        "id": "6e8e6a953769903d",
+        "text": "period = { day, month, year, span, label }\nday = 1..31\nmonth = 1..12\nyear = integer\nspan = \"DAY|MONTH|YEAR\""
+      },
+      "date": 1389590329358
+    },
+    {
+      "type": "edit",
+      "id": "6e8e6a953769903d",
+      "item": {
+        "type": "code",
+        "id": "6e8e6a953769903d",
+        "text": "period = { day, month, year, span, label }\nday = 1..31\nmonth = 1..12\nyear = integer\nspan = \"DAY|MONTH|YEAR\"\nlabel = \"April Fools Day\""
+      },
+      "date": 1389590349516
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "9c1c67500898e357"
+      },
+      "id": "9c1c67500898e357",
+      "type": "add",
+      "after": "6ab749f3e32fd885",
+      "date": 1389590357538
+    },
+    {
+      "type": "edit",
+      "id": "9c1c67500898e357",
+      "item": {
+        "type": "code",
+        "id": "9c1c67500898e357",
+        "text": "{\"April Fools Day\": {date: April 1, 2014, span: \"DAY\"}"
+      },
+      "date": 1389590462810
+    },
+    {
+      "type": "edit",
+      "id": "9c1c67500898e357",
+      "item": {
+        "type": "code",
+        "id": "9c1c67500898e357",
+        "text": "{\"April Fools\": {date: April 1, 2014, span: \"DAY\"}"
+      },
+      "date": 1389590487704
+    },
+    {
+      "type": "edit",
+      "id": "6e8e6a953769903d",
+      "item": {
+        "type": "code",
+        "id": "6e8e6a953769903d",
+        "text": "period = { day, month, year, span, label }\nday = 1..31\nmonth = 1..12\nyear = integer\nspan = \"DAY|MONTH|YEAR\"\nlabel = \"April Fools\""
+      },
+      "date": 1389590493324
+    },
+    {
+      "type": "edit",
+      "id": "119211e5f3431721",
+      "item": {
+        "type": "calendar",
+        "id": "119211e5f3431721",
+        "text": "Today\nAPRIL 1 April Fools"
+      },
+      "date": 1389590557566
+    },
+    {
+      "type": "edit",
+      "id": "119211e5f3431721",
+      "item": {
+        "type": "calendar",
+        "id": "119211e5f3431721",
+        "text": "Today\nAPRIL 1 April Fools Day"
+      },
+      "date": 1389590568280
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "3618cb35ad758aef"
+      },
+      "id": "3618cb35ad758aef",
+      "type": "add",
+      "after": "9c1c67500898e357",
+      "date": 1389590710107
+    },
+    {
+      "type": "edit",
+      "id": "3618cb35ad758aef",
+      "item": {
+        "type": "paragraph",
+        "id": "3618cb35ad758aef",
+        "text": "The Calendar plugin is a work in progress."
+      },
+      "date": 1389590723383
+    },
+    {
+      "type": "edit",
+      "id": "3abc5b920cc5b7dc",
+      "item": {
+        "type": "paragraph",
+        "id": "3abc5b920cc5b7dc",
+        "text": "A calendar item generates periods which may or may not uniquely specify a date or date interval. A period longer than a day will have a span."
+      },
+      "date": 1389591162627
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "60S \n1967 Summer of Love\nJAN 14 Human Be-In\nJUN San Francisco (hit song)\nOCT 6 Death of Hippie (mock funeral)"
+      },
+      "date": 1389591242202
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "60S Counterculture\n1967 Summer of Love\nJAN 14 Human Be-In\nJUN San Francisco (hit song)\nOCT 6 Death of Hippie (mock funeral)"
+      },
+      "date": 1389591253448
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "60S Counterculture\n67 Summer of Love\nJAN 14 Human Be-In\nJUN San Francisco (hit song)\nOCT 6 Death of Hippie (mock funeral)"
+      },
+      "date": 1389591308711
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "60S Counterculture\n1967 Summer of Love\nJAN 14 Human Be-In\nJUN San Francisco (hit song)\nOCT 6 Death of Hippie (mock funeral)"
+      },
+      "date": 1389591316247
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "LATE 60S Counterculture\n1967 Summer of Love\nJAN 14 Human Be-In\nJUN San Francisco (hit song)\nOCT 6 Death of Hippie (mock funeral)"
+      },
+      "date": 1389591335965
+    },
+    {
+      "type": "edit",
+      "id": "1717c285e7c6d29e",
+      "item": {
+        "type": "calendar",
+        "id": "1717c285e7c6d29e",
+        "text": "60S Counterculture\n1967 Summer of Love\nJAN 14 Human Be-In\nJUN San Francisco (hit song)\nOCT 6 Death of Hippie (mock funeral)"
+      },
+      "date": 1389591357389
+    },
+    {
+      "type": "edit",
+      "id": "6e8e6a953769903d",
+      "item": {
+        "type": "code",
+        "id": "6e8e6a953769903d",
+        "text": "period = { day, month, year, span, label }\nday = 1..31\nmonth = 1..12\nyear = integer\nspan = \"MONTH|YEAR|DECADE\"\nlabel = \"April Fools\""
+      },
+      "date": 1389591388517
+    },
+    {
+      "type": "edit",
+      "id": "6e8e6a953769903d",
+      "item": {
+        "type": "code",
+        "id": "6e8e6a953769903d",
+        "text": "period = { day, month, year, span, label }\nday = 1..31\nmonth = 1..12\nyear = integer\nspan = \"DAY|MONTH|YEAR|DECADE\"\nlabel = \"April Fools\""
+      },
+      "date": 1389591493180
+    },
+    {
+      "type": "edit",
+      "id": "3618cb35ad758aef",
+      "item": {
+        "type": "paragraph",
+        "id": "3618cb35ad758aef",
+        "text": "Date intervals evaluate to the first day of their interval for the purpose of sorting."
+      },
+      "date": 1389591710163
+    },
+    {
+      "item": {
+        "type": "paragraph",
+        "id": "f2b62636f92a38c5",
+        "text": "The Calendar plugin is a work in progress."
+      },
+      "id": "f2b62636f92a38c5",
+      "type": "add",
+      "after": "3618cb35ad758aef",
+      "date": 1389591710670
+    },
+    {
+      "type": "edit",
+      "id": "12e5cee03cede932",
+      "item": {
+        "type": "paragraph",
+        "id": "12e5cee03cede932",
+        "text": "A sequence of related dates need not repeat month or year when they have not changed from line to line."
+      },
+      "date": 1389591778691
+    },
+    {
+      "item": {
+        "type": "paragraph",
+        "id": "2a22ff127418d31f",
+        "text": "A date might be specified independent of any month or year. In this case, the date that the item is render is taken as the starting date."
+      },
+      "id": "2a22ff127418d31f",
+      "type": "add",
+      "after": "12e5cee03cede932",
+      "date": 1389591779199
+    },
+    {
+      "type": "remove",
+      "id": "f2b62636f92a38c5",
+      "date": 1389592039922
+    }
+  ]
+}
