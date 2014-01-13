@@ -1,4 +1,5 @@
-report = require './calendar'
+report = require '../client/calendar'
+expect = require 'expect.js'
 
 describe 'calendar plugin', ->
 
