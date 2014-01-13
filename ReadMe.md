@@ -2,7 +2,7 @@
 
 A calendar item defines a period of time as it might apply to an event or interval in the past or future. A small language makes for concise representation of periods of varying precision. Multiple definitions are allowed and can be expressed relative to each other.
 
-See [About Method Plugin](http://fed.wiki.org/about-calendar-plugin.html) for how-to documentation about this plugin.
+See [About Calendar Plugin](http://fed.wiki.org/about-calendar-plugin.html) for how-to documentation about this plugin.
 
 See [About Plugins](http://plugins.fed.wiki.org/about-plugins.html) for general information about plugins.
 
