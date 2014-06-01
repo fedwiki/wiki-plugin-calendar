@@ -4,7 +4,7 @@
     {
       "type": "paragraph",
       "id": "103100dfc222a50b",
-      "text": "A calendar item defines a period of time as it might apply to an event or interval in the past or future. A small language makes for concise representation of periods of varying precision. Multiple definitions are allowed and can be expressed relative to each other."
+      "text": "A calendar item defines a period of time as it might apply to an event or interval in the past or future. A small language makes for concise representation of periods of varying precision. Multiple definitions are allowed and can be expressed relative to each other. [https://github.com/fedwiki/wiki-plugin-calendar github]"
     },
     {
       "type": "paragraph",
@@ -80,9 +80,7 @@
       "type": "create",
       "item": {
         "title": "About Calendar Plugin",
-        "story": [
-
-        ]
+        "story": []
       },
       "date": 1389586946990
     },
@@ -747,6 +745,16 @@
       "type": "remove",
       "id": "f2b62636f92a38c5",
       "date": 1389592039922
+    },
+    {
+      "type": "edit",
+      "id": "103100dfc222a50b",
+      "item": {
+        "type": "paragraph",
+        "id": "103100dfc222a50b",
+        "text": "A calendar item defines a period of time as it might apply to an event or interval in the past or future. A small language makes for concise representation of periods of varying precision. Multiple definitions are allowed and can be expressed relative to each other. [https://github.com/fedwiki/wiki-plugin-calendar github]"
+      },
+      "date": 1401599155176
     }
   ]
 }
