@@ -45,9 +45,9 @@
       "text": "Marc Weber has suggested how dates should work and I offer my variations."
     },
     {
-      "type": "paragraph",
+      "type": "html",
       "id": "f6dafc22c13ef8ad",
-      "text": "<h3> Schema"
+      "text": "<h3>Schema</h3>"
     },
     {
       "type": "paragraph",
@@ -755,6 +755,27 @@
         "text": "A calendar item defines a period of time as it might apply to an event or interval in the past or future. A small language makes for concise representation of periods of varying precision. Multiple definitions are allowed and can be expressed relative to each other. [https://github.com/fedwiki/wiki-plugin-calendar github]"
       },
       "date": 1401599155176
+    },
+    {
+      "type": "edit",
+      "id": "f6dafc22c13ef8ad",
+      "item": {
+        "type": "html",
+        "id": "f6dafc22c13ef8ad",
+        "text": "<h3> Schema"
+      },
+      "date": 1418313982612
+    },
+    {
+      "type": "edit",
+      "id": "f6dafc22c13ef8ad",
+      "item": {
+        "type": "html",
+        "id": "f6dafc22c13ef8ad",
+        "text": "<h3>Schema</h3>"
+      },
+      "date": 1418313992362
     }
-  ]
+  ],
+  "plugin": "calendar"
 }
