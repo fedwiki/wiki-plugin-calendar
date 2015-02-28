@@ -1,3 +1,9 @@
+###
+ * Federated Wiki : Calendar Plugin
+ *
+ * Licensed under the MIT license.
+ * https://github.com/fedwiki/wiki-plugin-calendar/blob/master/LICENSE.txt
+###
 
 months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
 spans = ['EARLY', 'LATE', 'DECADE', 'DAY', 'MONTH', 'YEAR']
