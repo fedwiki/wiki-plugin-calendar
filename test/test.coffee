@@ -52,6 +52,34 @@ describe 'calendar plugin', ->
 			expect(results).to.eql [{date: new Date(2013, 4-1), month: 4, day: 1, span:'DAY', label: 'April Fools Day'}]
 			expect(output).to.eql {'April Fools Day': {date: new Date(2013, 4-1), span:'DAY'}}
 
+	describe 'radarSource', ->
+		label = 'Starts Now'
+		mock = {}
+		beforeEach ->
+			mock.el = {}
+			mock.$el =
+				addClass : (c) -> mock.actualClass = c
+				get : (n) -> mock.el
+			report.radarSource(mock.$el, [label: label, date: new Date('2015-09-01')])
+
+		it 'calls addClass with "radar-source"', ->
+			expect(mock.actualClass).to.be 'radar-source'
+
+		it 'adds radarData() to the DOM element', ->
+			expect(mock.el).to.have.key 'radarData'
+
+		it 'uses the labels as keys in the radarData', ->
+			expect(mock.el.radarData()).to.have.key label
+
+		it 'puts the days since the Epoch into the values in the radarData', ->
+			data = mock.el.radarData()
+			expect(data[label]).to.have.key 'value'
+			expect(data[label].value).to.eql 16679
+
+		it 'uses "weeks" as the units of the values in the radarData', ->
+			data = mock.el.radarData()
+			expect(data[label]).to.have.key 'units'
+			expect(data[label].units).to.eql ['days']
 	
 
 	# describe 'formatting', ->

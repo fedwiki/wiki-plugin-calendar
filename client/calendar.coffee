@@ -74,7 +74,20 @@ format = (rows) ->
 	for row in rows
 		"""<tr><td>#{show row.date, row.span}<td>#{row.label}"""
 
-module.exports = {parse, apply, format} if module?
+dateAsValue = (date) ->
+	days = Math.floor(date.getTime() / (1000 * 60 * 60 * 24))
+	units : ["days"]
+	value : days
+
+radarSource = ($item, results) ->
+	data = {}
+	for row in results
+		data[row.label] = dateAsValue(row.date)
+		
+	$item.addClass 'radar-source'
+	$item.get(0).radarData = -> data
+
+module.exports = {parse, apply, format, radarSource} if module?
 
 
 emit = (div, item) ->
@@ -82,6 +95,7 @@ emit = (div, item) ->
 	wiki.log 'calendar rows', rows
 	results = apply {}, {}, new Date(), rows
 	wiki.log 'calendar results', results
+	radarSource div, results	
 	div.append """
 		<table style="width:100%; background:#eee; padding:.8em; margin-bottom:5px;">#{format(results).join ''}</table>
 	"""
