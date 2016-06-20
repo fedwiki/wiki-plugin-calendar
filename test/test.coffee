@@ -53,14 +53,17 @@ describe 'calendar plugin', ->
 			expect(output).to.eql {'April Fools Day': {date: new Date(2013, 4-1), span:'DAY'}}
 
 	describe 'radarSource', ->
-		label = 'Starts Now'
 		mock = {}
 		beforeEach ->
 			mock.el = {}
 			mock.$el =
 				addClass : (c) -> mock.actualClass = c
 				get : (n) -> mock.el
-			report.radarSource(mock.$el, [label: label, date: new Date('2015-09-01')])
+			results = report.apply {}, {}, new Date(), report.parse('''
+				2015 SEP 1 Starts Now
+				LATE 90S Some languages were born
+			''')
+			report.radarSource(mock.$el, results)
 
 		it 'calls addClass with "radar-source"', ->
 			expect(mock.actualClass).to.be 'radar-source'
@@ -69,18 +72,26 @@ describe 'calendar plugin', ->
 			expect(mock.el).to.have.key 'radarData'
 
 		it 'uses the labels as keys in the radarData', ->
-			expect(mock.el.radarData()).to.have.key label
+			expect(mock.el.radarData()).to.have.key 'Starts Now'
 
-		it 'puts the days since the Epoch into the values in the radarData', ->
+		it 'puts the distance from the Epoch into the values in the radarData', ->
 			data = mock.el.radarData()
-			expect(data[label]).to.have.key 'value'
-			expect(data[label].value).to.eql 16679
+			expect(data['Starts Now']).to.have.key 'value'
+			expect(data['Starts Now'].value).to.eql 16679
 
-		it 'uses "weeks" as the units of the values in the radarData', ->
+		it 'specifies units & precision with values in the radarData', ->
 			data = mock.el.radarData()
-			expect(data[label]).to.have.key 'units'
-			expect(data[label].units).to.eql ['days']
-	
+			expect(data['Starts Now']).to.have.key 'units'
+			expect(data['Starts Now'].units).to.eql ['day']
+			expect(data['Starts Now']).to.have.key 'precision'
+			expect(data['Starts Now'].precision).to.eql 86400000
+
+		it 'chooses units & precision to match the parsed span of the date', ->
+			data = mock.el.radarData()
+			expect(data['Some languages were born']).to.have.key 'units'
+			expect(data['Some languages were born'].units).to.eql ['decade']
+			expect(data['Some languages were born']).to.have.key 'precision'
+			expect(data['Some languages were born'].precision).to.eql 315576000000.0
 
 	# describe 'formatting', ->
 	# 	it 'returns an array of strings', ->
