@@ -49,8 +49,8 @@ describe 'calendar plugin', ->
 			output = {}
 			rows = report.parse "APRIL 1 April Fools Day"
 			results = report.apply input, output, today, rows
-			expect(results).to.eql [{date: new Date(2013, 4-1), month: 4, day: 1, span:'DAY', label: 'April Fools Day'}]
-			expect(output).to.eql {'April Fools Day': {date: new Date(2013, 4-1), span:'DAY'}}
+			expect(results).to.eql [{date: new Date(2013, 4-1, 1), month: 4, day: 1, span:'DAY', label: 'April Fools Day'}]
+			expect(output).to.eql {'April Fools Day': {date: new Date(2013, 4-1, 1), span:'DAY'}}
 
 	describe 'radarSource', ->
 		mock = {}
