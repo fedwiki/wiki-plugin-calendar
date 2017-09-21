@@ -76,22 +76,27 @@ describe 'calendar plugin', ->
 
 		it 'puts the distance from the Epoch into the values in the radarData', ->
 			data = mock.el.radarData()
+			daysSinceEpoch =
+				new Date('2015-09-01').getTime() /
+				(24 * 60 * 60 * 1000) # 16,679
 			expect(data['Starts Now']).to.have.key 'value'
-			expect(data['Starts Now'].value).to.eql 16679
+			expect(data['Starts Now'].value).to.eql daysSinceEpoch
 
 		it 'specifies units & precision with values in the radarData', ->
 			data = mock.el.radarData()
+			oneDayInMS = 24 * 60 * 60 * 1000 # 86,400,000
 			expect(data['Starts Now']).to.have.key 'units'
 			expect(data['Starts Now'].units).to.eql ['day']
 			expect(data['Starts Now']).to.have.key 'precision'
-			expect(data['Starts Now'].precision).to.eql 86400000
+			expect(data['Starts Now'].precision).to.eql oneDayInMS
 
 		it 'chooses units & precision to match the parsed span of the date', ->
 			data = mock.el.radarData()
+			oneDecadeInMS = 10 * 365.25 * 24 * 60 * 60 * 1000 # 315,576,000,000
 			expect(data['Some languages were born']).to.have.key 'units'
 			expect(data['Some languages were born'].units).to.eql ['decade']
 			expect(data['Some languages were born']).to.have.key 'precision'
-			expect(data['Some languages were born'].precision).to.eql 315576000000.0
+			expect(data['Some languages were born'].precision).to.eql oneDecadeInMS
 
 	# describe 'formatting', ->
 	# 	it 'returns an array of strings', ->
