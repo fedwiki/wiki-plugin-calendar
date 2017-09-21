@@ -78,7 +78,7 @@ precisionFor =
 	DAY:		1000 * 60 * 60 * 24
 	MONTH:	1000 * 60 * 60 * 24 * 365.25 / 12
 	YEAR:		1000 * 60 * 60 * 24 * 365.25
-	DECADE: 1000 * 60 * 60 * 24 * 365.25 * 10
+	DECADE:	1000 * 60 * 60 * 24 * 365.25 * 10
 	EARLY:	1000 * 60 * 60 * 24 * 365.25 * 10
 	LATE:		1000 * 60 * 60 * 24 * 365.25 * 10
 
@@ -86,7 +86,7 @@ unitsFor =
 	DAY:		'day'
 	MONTH:	'month'
 	YEAR:		'year'
-	DECADE: 'decade'
+	DECADE:	'decade'
 	EARLY:	'decade'
 	LATE:		'decade'
 
