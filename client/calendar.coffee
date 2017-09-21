@@ -27,7 +27,7 @@ parse = (text) ->
 				result.year = +m[1]+1900
 				span result, 'DECADE'
 			else if (m = spans.indexOf word) >= 0
-			  result.span = spans[m]
+				result.span = spans[m]
 			else if (m = months.indexOf word[0..2]) >= 0
 				result.month = m+1
 				span result, 'MONTH'
@@ -57,6 +57,10 @@ apply = (input, output, date, rows) ->
 			output[row.label] = {date}
 			output[row.label].span = row.span if row.span?
 		row.date = date
+		radarValue = dateAsValue(row.date, row.span)
+		row.units = radarValue.units
+		row.value = radarValue.value
+		row.precision = radarValue.precision
 		result.push row
 	result
 
@@ -74,7 +78,40 @@ format = (rows) ->
 	for row in rows
 		"""<tr><td>#{show row.date, row.span}<td>#{row.label}"""
 
-module.exports = {parse, apply, format} if module?
+precisionFor =
+	DAY:		1000 * 60 * 60 * 24
+	MONTH:	1000 * 60 * 60 * 24 * 365.25 / 12
+	YEAR:		1000 * 60 * 60 * 24 * 365.25
+	DECADE:	1000 * 60 * 60 * 24 * 365.25 * 10
+	EARLY:	1000 * 60 * 60 * 24 * 365.25 * 10
+	LATE:		1000 * 60 * 60 * 24 * 365.25 * 10
+
+unitsFor =
+	DAY:		'day'
+	MONTH:	'month'
+	YEAR:		'year'
+	DECADE:	'decade'
+	EARLY:	'decade'
+	LATE:		'decade'
+
+dateAsValue = (date, span) ->
+	precisionInMilliseconds = precisionFor[span] ? precisionFor.DAY
+	units : [unitsFor[span] ? unitsFor.DAY]
+	value : (Math.floor(date.getTime() / precisionInMilliseconds))
+	precision : precisionInMilliseconds
+
+radarSource = ($item, results) ->
+	data = {}
+	for row in results
+		data[row.label] =
+			units: row.units
+			value: row.value
+			precision: row.precision
+
+	$item.addClass 'radar-source'
+	$item.get(0).radarData = -> data
+
+module.exports = {parse, apply, format, radarSource} if module?
 
 
 emit = (div, item) ->
@@ -82,6 +119,7 @@ emit = (div, item) ->
 	wiki.log 'calendar rows', rows
 	results = apply {}, {}, new Date(), rows
 	wiki.log 'calendar results', results
+	radarSource div, results
 	div.append """
 		<table style="width:100%; background:#eee; padding:.8em; margin-bottom:5px;">#{format(results).join ''}</table>
 	"""
