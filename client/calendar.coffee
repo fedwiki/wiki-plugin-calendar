@@ -57,6 +57,10 @@ apply = (input, output, date, rows) ->
 			output[row.label] = {date}
 			output[row.label].span = row.span if row.span?
 		row.date = date
+		radarValue = dateAsValue(row.date, row.span)
+		row.units = radarValue.units
+		row.value = radarValue.value
+		row.precision = radarValue.precision
 		result.push row
 	result
 
@@ -91,15 +95,18 @@ unitsFor =
 	LATE:		'decade'
 
 dateAsValue = (date, span) ->
-	precision = precisionFor[span] ? precisionFor.DAY
+	precisionInMilliseconds = precisionFor[span] ? precisionFor.DAY
 	units : [unitsFor[span] ? unitsFor.DAY]
-	value : (Math.floor(date.getTime() / precision))
-	precision : precision
+	value : (Math.floor(date.getTime() / precisionInMilliseconds))
+	precision : precisionInMilliseconds
 
 radarSource = ($item, results) ->
 	data = {}
 	for row in results
-		data[row.label] = dateAsValue(row.date, row.span)
+		data[row.label] =
+			units: row.units
+			value: row.value
+			precision: row.precision
 
 	$item.addClass 'radar-source'
 	$item.get(0).radarData = -> data

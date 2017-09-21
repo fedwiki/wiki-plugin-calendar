@@ -37,19 +37,35 @@ describe 'calendar plugin', ->
 
 		today = new Date 2013, 2-1, 3
 		interview = new Date 2006, 4-1, 24
+		oneDayInMS = 24*60*60*1000
 
 		it 'recalls input', ->
 			input = {interview: {date: interview}}
 			output = {}
 			rows = report.parse "interview"
-			expect(report.apply input, output, today, rows).to.eql [{date: interview, label:'interview'}]
+			expect(report.apply input, output, today, rows).to.eql [
+				date: interview
+				label:'interview'
+				units: ['day']
+				value: interview.getTime() / oneDayInMS
+				precision: oneDayInMS
+			]
 
 		it 'extends today', ->
 			input = {}
 			output = {}
 			rows = report.parse "APRIL 1 April Fools Day"
 			results = report.apply input, output, today, rows
-			expect(results).to.eql [{date: new Date(2013, 4-1, 1), month: 4, day: 1, span:'DAY', label: 'April Fools Day'}]
+			expect(results).to.eql [
+				date: new Date(2013, 4-1, 1)
+				month: 4
+				day: 1
+				span:'DAY'
+				label: 'April Fools Day'
+				units: ['day']
+				value: new Date(2013, 4-1, 1).getTime() / oneDayInMS
+				precision: oneDayInMS
+			]
 			expect(output).to.eql {'April Fools Day': {date: new Date(2013, 4-1, 1), span:'DAY'}}
 
 	describe 'radarSource', ->
