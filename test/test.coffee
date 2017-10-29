@@ -47,7 +47,7 @@ describe 'calendar plugin', ->
 				date: interview
 				label:'interview'
 				units: ['day']
-				value: interview.getTime() / oneDayInMS
+				value: Math.floor(interview.getTime() / oneDayInMS)
 				precision: oneDayInMS
 			]
 
@@ -63,7 +63,7 @@ describe 'calendar plugin', ->
 				span:'DAY'
 				label: 'April Fools Day'
 				units: ['day']
-				value: new Date(2013, 4-1, 1).getTime() / oneDayInMS
+				value: Math.floor(new Date(2013, 4-1, 1).getTime() / oneDayInMS)
 				precision: oneDayInMS
 			]
 			expect(output).to.eql {'April Fools Day': {date: new Date(2013, 4-1, 1), span:'DAY'}}
@@ -92,9 +92,7 @@ describe 'calendar plugin', ->
 
 		it 'puts the distance from the Epoch into the values in the radarData', ->
 			data = mock.el.radarData()
-			daysSinceEpoch =
-				new Date('2015-09-01').getTime() /
-				(24 * 60 * 60 * 1000) # 16,679
+			daysSinceEpoch = Math.floor(new Date(2015, 8, 1).getTime() / (24 * 60 * 60 * 1000) ) # 16,679
 			expect(data['Starts Now']).to.have.key 'value'
 			expect(data['Starts Now'].value).to.eql daysSinceEpoch
 
