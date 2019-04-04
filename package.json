@@ -30,13 +30,13 @@
     "test": "mocha"
   },
   "devDependencies": {
+    "expect.js": "^0.3.1",
     "grunt": "^1.0.1",
-    "grunt-contrib-coffee": "^1.0.0",
+    "grunt-contrib-coffee": "^2.1.0",
     "grunt-contrib-watch": "^1.0.0",
-    "mocha": "*",
-    "expect.js": "*",
+    "grunt-git-authors": "~3",
     "grunt-mocha-test": "^0.13.3",
-    "grunt-git-authors": "~3"
+    "mocha": "^5.2.0"
   },
   "license": "MIT",
   "repository": {
