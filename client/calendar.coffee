@@ -116,15 +116,15 @@ module.exports = {parse, apply, format, radarSource} if module?
 
 emit = (div, item) ->
 	rows = parse item.text
-	wiki.log 'calendar rows', rows
+	# wiki.log 'calendar rows', rows
 	results = apply {}, {}, new Date(), rows
-	wiki.log 'calendar results', results
+	# wiki.log 'calendar results', results
 	radarSource div, results
 	div.append """
 		<table style="width:100%; background:#eee; padding:.8em; margin-bottom:5px;">#{format(results).join ''}</table>
 	"""
 
 bind = (div, item) ->
-	div.dblclick -> wiki.textEditor div, item
+	div.on 'dblclick', () -> wiki.textEditor div, item
 
 window.plugins.calendar = {emit, bind} if window?
