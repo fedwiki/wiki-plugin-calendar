@@ -37,14 +37,6 @@
       "text": "Calendar plugins create objects that can be used in other applications. This work-in-progress has had historical timelines in mind."
     },
     {
-      "type": "reference",
-      "id": "6bb46f51f1350a9c",
-      "site": "ward.vw.fed.wiki.org",
-      "slug": "dates-for-timelines",
-      "title": "Dates for Timelines",
-      "text": "Marc Weber has suggested how dates should work and I offer my variations."
-    },
-    {
       "type": "html",
       "id": "f6dafc22c13ef8ad",
       "text": "<h3>Schema</h3>"
@@ -775,7 +767,11 @@
         "text": "<h3>Schema</h3>"
       },
       "date": 1418313992362
+    },
+    {
+      "type": "remove",
+      "id": "6bb46f51f1350a9c",
+      "date": 1674569475158
     }
-  ],
-  "plugin": "calendar"
+  ]
 }
