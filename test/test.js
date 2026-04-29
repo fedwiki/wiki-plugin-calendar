@@ -1,4 +1,5 @@
 import { calendar as report } from '../src/client/calendar.js'
+import { describe, it, beforeEach } from 'node:test'
 import expect from 'expect.js'
 
 describe('calendar plugin', function () {
